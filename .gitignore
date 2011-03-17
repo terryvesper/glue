@@ -1,0 +1,4 @@
+*.js
+lib/
+lib-cov/
+package.json

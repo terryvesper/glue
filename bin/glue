@@ -1,0 +1,3 @@
+#!/usr/bin/env coffee
+glue = require 'glue'
+console.log "glue v#{glue.VERSION}"
