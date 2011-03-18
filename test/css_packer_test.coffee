@@ -14,9 +14,9 @@ module.exports =
     topic.parser.should.be.a 'object'
 
   'CSSPacker#new accepts and inits dir': ->
-    fixture_dir = './css/*.css'
-    topic = new css_packer.CSSPacker fixture_dir
+    fixture_config = './css/*.css'
+    topic = new css_packer.CSSPacker fixture_config
 
-    topic.should.have.property 'dir'
-    topic.dir.should.be.a 'string'
-    topic.dir.should.equal fixture_dir
+    topic.should.have.property 'config'
+    topic.config.should.be.a 'string'
+    topic.config.should.equal fixture_config
