@@ -1,10 +1,12 @@
 assert = require 'assert'
+should = require 'should'
+
 glue = require 'glue'
 
 module.exports = 
   'VERSION is defined': ->
-    assert.isDefined glue.VERSION
+    glue.should.have.property 'VERSION'
   'VERSION is a string': ->
-    assert.type glue.VERSION, 'string'
+    glue.VERSION.should.be.a 'string'
   'VERSION doesn\'t end with a newline': ->
-    assert.notEqual glue.VERSION, "\n"
+    glue.VERSION[-1..-1].should.not.equal  '\n'
