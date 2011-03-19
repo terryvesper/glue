@@ -1,4 +1,4 @@
-execute = require('./src/glue_functions').execute
+execute = require('./src/glue_cli').execute
 
 task 'build', 'Build glue npm package', ->
   execute 'Creating package.json', 'courier'

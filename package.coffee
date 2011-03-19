@@ -13,6 +13,7 @@ dependencies:
   'coffee-script': '>= 1.0.1'
   less: '>=1.0.41'
   should: '>=0.0.4'
+  optimist: '>=0.1.6'
  
 engines:
   node: '>= 0.4.2'

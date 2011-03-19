@@ -1,6 +1,5 @@
 # Version string
-VERSION = require('fs').readFileSync('./VERSION', 'utf8')[..-2]
-exports.VERSION = VERSION
+exports.VERSION = VERSION = require('fs')
+.readFileSync('./VERSION', 'utf8')[..-2]
 
-# TODO: Expose? Use class? Expose class, createPacker?
-css_packer = require './css_packer'
+exports.cli = require './glue_cli'

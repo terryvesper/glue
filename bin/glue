@@ -1,16 +1,34 @@
 #!/usr/bin/env coffee
-glue = require 'glue'
+# TODO: replace with glue for live
+{cli, VERSION} = require('../')
 
-# 0. Parse command arguments
-console.log "glue v#{glue.VERSION}"
+util = require 'util'
+print = require('sys').print
 
+# Welcome
+print "Lets glue some stuff together (glue #{VERSION})\n"
+usage = '\nUsage: glue [command]
+\n
+\nCommands:
+\n  create [name]               generate a new app in dir [name]
+\n  help                        show this help
+\n'
 
-# 1. create app
-# -> copy all stuff from skel to a new dir
-# this includes a Cakefile with tasks to:
-# a. pack/build CSS
-# b. pack/build js
+# Argument parsing
+# TODO: these offsets aren't nice and our script name is not in argv
+command = process.argv[2]
+parameters = process.argv[3..]
 
-# 2. create stuff for your app
-# -> pluggable?
-# ie. RedisModel, CouchModel, GiantCock, whatever
+# Must specify at least a command
+if command is undefined or command is 'help'
+  print usage
+  process.exit(1)
+
+# Invoke the command if it exists
+if cli[command]
+  if parameters.length is 0
+    cli[command]()
+  else
+    cli[command](parameters...)
+else
+  cli.error 'Invalid command supplied, try "glue help"'
