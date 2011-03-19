@@ -15,7 +15,7 @@ execCallback = (message) ->
       error message
       log "#{err.message or err}"
       log stdout
-      process.exit(1)
+      process.exit 1
     else
       success message
       log stdout
@@ -23,7 +23,7 @@ execCallback = (message) ->
 
 # Execute a command and process output with execCallback
 execute = (message, command) ->
-  exec command, execCallback(message)
+  exec command, execCallback message
 
 # Log a message with error formatting
 error = (message) ->
