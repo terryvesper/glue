@@ -1,6 +1,3 @@
-assert = require 'assert'
-should = require 'should'
-
 css_packer = require 'css_packer'
 
 module.exports = 

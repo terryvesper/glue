@@ -1,6 +1,3 @@
-assert = require 'assert'
-should = require 'should'
-
 glue = require 'glue'
 
 module.exports = 

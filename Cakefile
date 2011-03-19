@@ -1,21 +1,4 @@
-exec = require('child_process').exec
-
-red = '\033[0;31m'
-green = '\033[0;32m'
-reset = '\033[0m'
-
-execute = (message, command) ->
-  exec command
-  , (error, stdout, stderr) ->
-    if error
-      console.log "✗ #{red}#{message}...#{reset}"
-      console.log "#{error.message or error}" if error isnt ''
-      console.log stdout
-      process.exit(1)
-    else
-      console.log "✓ #{green}#{message}...#{reset}"
-      console.log stdout if stdout isnt ''
-      console.log stderr if stderr isnt ''
+execute = require('./src/glue_functions').execute
 
 task 'build', 'Build glue npm package', ->
   execute 'Creating package.json', 'courier'
@@ -47,9 +30,9 @@ task 'setup', 'Setup glue development packages', ->
 task 'test', 'Compile and run all tests', ->
   invoke 'build'
   execute 'Running tests with expresso'
-  , 'coffee -c test/*.coffee && expresso -I lib'
+  , 'coffee -c test/*.coffee && expresso -I lib -r assert -r should'
 
 task 'test-cov', 'Compile and run all test with coverage analysis', ->
   invoke 'build'
   execute 'Running tests with expresso and node-jscoverage'
-  , 'coffee -c test/*.coffee && expresso -I lib --cov'
+  , 'coffee -c test/*.coffee && expresso -I lib --cov -r assert -r should'
