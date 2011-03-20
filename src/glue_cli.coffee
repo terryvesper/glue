@@ -34,6 +34,7 @@ success = (message) ->
   log "✓ #{green}#{message}...#{reset}"
 
 # Module contents
+exports.execCallback = execCallback
 exports.execute = execute
 exports.error = error
 exports.success = success
