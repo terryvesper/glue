@@ -1,4 +1,4 @@
-topic = require 'glue_cli'
+topic = require 'modules/glue_cli'
 
 # This returns log messages instead of printing to console :)
 console.log = (message) -> message
@@ -26,7 +26,7 @@ module.exports =
     trycatch(topic.execute, ['msg', 'cmd'])[1].should.equal 'cmd'      
 
   # TODO: still missing tests for logging of stdout and calling of
-  # error/success.
+  # error/success. Should try to assert inside console.log...
   'execCallback should be a function': ->
     topic.execCallback.should.be.a 'function'
   'execCallback should return a function': ->
@@ -47,7 +47,7 @@ module.exports =
 
   'success should be a function': ->
     topic.should.respondTo 'success'
-  'success should return the message in red': ->
+  'success should return the message in green': ->
     topic.success('test').should.include.string '[0;32mtest'
   'success should end with an ANSI reset': ->
     topic.success('test').should.match /\[0m$/

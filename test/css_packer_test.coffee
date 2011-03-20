@@ -1,4 +1,4 @@
-css_packer = require 'css_packer'
+css_packer = require 'classes/css_packer'
 
 module.exports = 
   'module exports CSSPacker': ->

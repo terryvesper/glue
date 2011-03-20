@@ -1,16 +1,21 @@
-execute = require('./src/glue_cli').execute
+execute = require('./src/modules/glue_cli').execute
 
 task 'build', 'Build glue npm package', ->
   execute 'Creating package.json', 'courier'
   execute  'Compiling loader', 'coffee -c index.coffee'
-  execute 'Compiling src/*.coffee to lib', 'coffee -co lib src/*.coffee'
+  execute 'Compiling src to lib'
+  , 'coffee -co lib src/*.coffee'
+  execute 'Compiling src/classes to lib/classes'
+  , 'coffee -co lib/classes src/classes/*.coffee'
+  execute 'Compiling src/modules to lib/modules'
+  , 'coffee -co lib/modules src/modules/*.coffee'
 
 task 'publish', 'Publish glue to npm repository', ->
   #runner 'Publishing to npm', -> exec 'npm publish .'
 
 task 'clean', 'Clean generated files', ->
   execute 'Removing package.json', 'rm -f package.json'
-  execute 'Removing generated lib/*.js files', 'rm -f lib/*.js'
+  execute 'Removing generated lib dir', 'rm -rf lib'
   execute 'Removing compiled tests', 'rm -f test/*.js'
   execute 'Removing coverage helpers', 'rm -rf lib-cov/'
   execute 'Removing loader', 'rm -f index.js'
