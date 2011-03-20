@@ -1,6 +1,5 @@
 #!/usr/bin/env coffee
-# TODO: replace with glue for live
-{cli, VERSION} = require('../')
+{cli, VERSION} = require('glue')
 
 util = require 'util'
 print = require('sys').print
@@ -15,7 +14,6 @@ usage = '\nUsage: glue [command]
 \n'
 
 # Argument parsing
-# TODO: these offsets aren't nice and our script name is not in argv
 command = process.argv[2]
 parameters = process.argv[3..]
 
@@ -26,9 +24,6 @@ if command is undefined or command is 'help'
 
 # Invoke the command if it exists
 if cli[command]
-  if parameters.length is 0
-    cli[command]()
-  else
-    cli[command](parameters...)
+  cli[command](parameters...)
 else
   cli.error 'Invalid command supplied, try "glue help"'

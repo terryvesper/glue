@@ -35,4 +35,5 @@ task 'test', 'Compile and run all tests', ->
 task 'test-cov', 'Compile and run all test with coverage analysis', ->
   invoke 'build'
   execute 'Running tests with expresso and node-jscoverage'
-  , 'coffee -c test/*.coffee && expresso -I lib --cov -r assert -r should'
+  , 'coffee -c test/*.coffee && expresso -I lib --cov -r assert 
+    -r should'
