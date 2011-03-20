@@ -13,8 +13,8 @@ trycatch = (f,a) ->
   catch e 
     e
 
-# An ugly way to hook the actual process spawn and not have to worry
-# about what we return. But OCD with 100% > nice code
+# Hook the actual process spawn and not have to worry about what we
+# return. It's ugly but my OCD with 100% > nice code.
 process.binding('child_process').ChildProcess.prototype.spawn = 
 (path, args, rest...) -> 
   throw args
@@ -53,4 +53,3 @@ module.exports =
     topic.success('test').should.match /\[0m$/
   'success should start with ✓': ->
     topic.success('test').should.match /^✓/
-      

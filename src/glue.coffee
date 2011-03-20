@@ -4,5 +4,3 @@ exports.VERSION = VERSION = require('fs')
 
 # Command line aids for Cakefile and bin
 exports.cli = require './glue_cli'
-
-exports
