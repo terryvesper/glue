@@ -10,11 +10,8 @@ module.exports =
   'VERSION should be dotted digits': ->
     glue.VERSION.should.match /^\d+\.\d+\.\d+$/
 
-  'cli should be defined': ->
+  'cli should be an object': ->
     glue.cli.should.be.a 'object'
     
-  'a global _glue object should be defined': ->
-    _glue.should.be.a 'object'
-  
-  '_glue should have an initialized ConnectionPool': ->
-    _glue.connectionPool.should.be.an.instanceof glue.ConnectionPool
+  'createApp should be a function': ->
+    glue.createApp.should.be.a 'function'

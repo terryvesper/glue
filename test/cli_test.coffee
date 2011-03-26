@@ -1,4 +1,4 @@
-topic = require 'modules/glue_cli'
+topic = require 'cli'
 
 # This returns log messages instead of printing to console :)
 console.log = (message) -> message

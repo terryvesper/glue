@@ -34,6 +34,7 @@ success = (message) ->
   log "✓ #{green}#{message}...#{reset}"
 
 # Module contents
+# TODO: execCallback is now only exported for tests :s
 exports.execCallback = execCallback
 exports.execute = execute
 exports.error = error

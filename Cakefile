@@ -1,14 +1,9 @@
-execute = require('./src/modules/glue_cli').execute
+execute = require('./src/cli').execute
 
 task 'build', 'Build glue npm package', ->
   execute 'Creating package.json', 'courier'
-  execute  'Compiling loader', 'coffee -c index.coffee'
-  execute 'Compiling src to lib'
-  , 'coffee -co lib src/*.coffee'
-  execute 'Compiling src/classes to lib/classes'
-  , 'coffee -co lib/classes src/classes/*.coffee'
-  execute 'Compiling src/modules to lib/modules'
-  , 'coffee -co lib/modules src/modules/*.coffee'
+  execute 'Compiling loader', 'coffee -c index.coffee'
+  execute 'Compiling src to lib', 'coffee -co lib src/*.coffee'
 
 task 'publish', 'Publish glue to npm repository', ->
   #runner 'Publishing to npm', -> exec 'npm publish .'
@@ -40,5 +35,4 @@ task 'test', 'Compile and run all tests', ->
 task 'test-cov', 'Compile and run all test with coverage analysis', ->
   invoke 'build'
   execute 'Running tests with expresso and node-jscoverage'
-  , 'coffee -c test/*.coffee && expresso -I lib --cov -r assert 
-    -r should'
+  , 'coffee -c test/*.coffee && expresso -I lib --cov -r assert -r should'
