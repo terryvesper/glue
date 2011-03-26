@@ -1,6 +1,6 @@
 #!/usr/bin/env coffee
 {cli, VERSION} = require('glue')
-bin = require('glue/lib/modules/glue_bin')
+bin = require('glue/lib/bin')
 
 util = require 'util'
 print = require('sys').print
@@ -24,7 +24,7 @@ if command is undefined or command is 'help'
   process.exit(1)
 
 # Invoke the command if it exists
-if cli[command]
-  cli[command](parameters...)
+if bin[command]
+  bin[command](parameters...)
 else
   cli.error 'Invalid command supplied, try "glue help"'

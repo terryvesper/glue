@@ -27,11 +27,11 @@ execute = (message, command) ->
 
 # Log a message with error formatting
 error = (message) ->
-  log "✗ #{red}#{message}...#{reset}"
+  log "✗ #{red}#{message}#{reset}"
 
 # Log a message with success formatting
 success = (message) ->
-  log "✓ #{green}#{message}...#{reset}"
+  log "✓ #{green}#{message}#{reset}"
 
 # Module contents
 # TODO: execCallback is now only exported for tests :s
